@@ -1,111 +1,142 @@
-:root{
-    --backg: #f5f5f5;
-    --fontm: #1a1a1a;
-    --subfont:rgb(255, 255, 255, 0.6);
-    --yfont: #ffd633;
+:global(body) {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
-/* 🌍 Page Container */
 .formContainer {
-  background-color: var(--backg);
-  padding: 2rem;
   display: flex;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
 }
 
 .headingWord {
-  color: var(--yfont); /* yellow for static text */
-  font-size: 1.8rem;
-  margin: 0;
-  margin-bottom: 2rem;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 32px;
   text-align: center;
+  color: #333;
 }
 
-.headingWord .jobTitle {
-  color: var(--fontm); /* special color for dynamic role */
+.jobTitle {
+  background-color: #FFD600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: #000;
 }
 
-
-/* 📦 Form Box */
-.form {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 548px;
-  max-height: 688px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.inputHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
 }
 
-/* 🏷️ Section Titles */
+.labelIcon {
+  font-size: 20px;
+  color: #FFD600;
+}
 
-
-/* 🧩 Input Sections */
 .nameInput,
 .emailInput,
 .phoneInput,
-.otherInput,
-.search-dropdown-wrapper {
-  margin-bottom: 1.5rem;
+.universityInput,
+.otherUniversityInput {
+  margin-bottom: 24px;
 }
 
-.inputHeader{
-    display: flex;
-    align-items: center;
-    
-}
-label{
-    margin-left: 10px;
-}
-.lableIcon{
-    font-size: 25px;
-}
-
-/* 🖊️ Input Fields */
 input[type="text"],
 input[type="email"],
-input[type="number"],
 input[type="file"],
-input[type="university"] {
+input[type="tel"],
+input[type="number"] {
   width: 100%;
-  padding: 0.75rem;
+  padding: 12px 14px;
+  font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #333;
+  border-radius: 8px; /* Match Select */
   outline: none;
+  transition: border-color 0.2s;
 }
 
-/* 🟡 Buttons (if you add them later) */
-.submit-btn {
+input:focus {
+  border-color: #FFD600;
+}
+
+.customSelect__control {
+  border-radius: 8px !important;
+  border-color: #ccc !important;
+  font-size: 16px;
+}
+
+.cvUploadSection {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 24px;
+  background-color: #fff;
+  transition: background 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cvUploadSection.dragActive {
+  border-color: #FFD600;
+  background-color: #FFF9E1;
+}
+
+.submitButton {
   background-color: #000;
-  color: #f5c518;
-  padding: 0.75rem;
+  color: #FFD600;
+  padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  margin-top: 24px;
   width: 100%;
-  margin-top: 1rem;
+  transition: background-color 0.3s, color 0.3s;
 }
-.submitButton{
-    background-color: #000;
-  color: #f5c518;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 1rem;
+
+.submitButton:hover,
+.submitButton:active {
+  background-color: #FFD600;
+  color: #000;
 }
+
 .cancelButton {
-  background-color: white;
-  color: #666;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
+  background-color: #eee;
+  color: #333;
+  padding: 12px 24px;
+  border: none;
   border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
+  margin-top: 12px;
   width: 100%;
-  margin-top: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.cancelButton:hover {
+  background-color: #ddd;
 }
