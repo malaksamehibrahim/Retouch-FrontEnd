@@ -94,7 +94,7 @@ const Forms = () => {
         </h1>
 
         {/* Full Name */}
-        <div className={styles.nameInput}>
+        <div className={styles.inputBlock}>
           <div className={styles.inputHeader}>
             <IoIosContact className={styles.labelIcon} />
             <label htmlFor="name">Full Name:</label>
@@ -111,7 +111,7 @@ const Forms = () => {
         </div>
 
         {/* Email */}
-        <div className={styles.emailInput}>
+        <div className={styles.inputBlock}>
           <div className={styles.inputHeader}>
             <MdOutlineMail className={styles.labelIcon} />
             <label htmlFor="email">Email Address:</label>
@@ -128,7 +128,7 @@ const Forms = () => {
         </div>
 
         {/* Phone */}
-        <div className={styles.phoneInput}>
+        <div className={styles.inputBlock}>
           <div className={styles.inputHeader}>
             <BsTelephone className={styles.labelIcon} />
             <label htmlFor="phone">Phone Number:</label>
@@ -145,7 +145,7 @@ const Forms = () => {
         </div>
 
         {/* University Select */}
-        <div className={styles.universityInput}>
+        <div className={styles.inputBlock}>
           <div className={styles.inputHeader}>
             <FaUniversity className={styles.labelIcon} />
             <label htmlFor="university">Select your university:</label>
@@ -161,7 +161,10 @@ const Forms = () => {
             styles={{
               control: (base, state) => ({
                 ...base,
+                width: '100%',
+                height: 48,
                 minHeight: 48,
+                padding: 0,
                 fontSize: 16,
                 borderRadius: 8,
                 borderColor: state.isFocused ? '#FFD600' : '#ccc',
@@ -189,7 +192,7 @@ const Forms = () => {
 
         {/* Other University Input */}
         {values.university === 'Other' && (
-          <div className={styles.otherUniversityInput}>
+          <div className={styles.inputBlock}>
             <div className={styles.inputHeader}>
               <FaUniversity className={styles.labelIcon} />
               <label htmlFor="otherUniversity">Enter your university:</label>
@@ -237,7 +240,7 @@ const Forms = () => {
         <button
           type="button"
           className={styles.cancelButton}
-          onClick={() => navigate('/jobOffers')}
+          onClick={() => navigate(-1)}
         >
           Cancel
         </button>
@@ -247,6 +250,8 @@ const Forms = () => {
 };
 
 export default Forms;
+
+
 
 
 // import React, { useState, useEffect } from 'react';
