@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import styles from './SignIn.module.css';
-import { MdOutlineMail, MdLock } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import styles from "./SignIn.module.css";
+import { MdOutlineMail, MdLock } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleChanges = (e) => {
@@ -24,7 +24,7 @@ const SignIn = () => {
     if (errors[name]) {
       setErrors({
         ...errors,
-        [name]: '',
+        [name]: "",
       });
     }
   };
@@ -33,13 +33,13 @@ const SignIn = () => {
     const newErrors = {};
 
     if (!values.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
 
     if (!values.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     }
 
     return newErrors;
@@ -51,14 +51,14 @@ const SignIn = () => {
 
     if (Object.keys(formErrors).length === 0) {
       // Form is valid, proceed with submission
-      console.log('Form submitted:', { ...values, rememberMe });
-      setSuccessMessage('Sent successfully! Please check your email.');
-      
+      console.log("Form submitted:", { ...values, rememberMe });
+      setSuccessMessage("Sent successfully! Please check your email.");
+
       // Simulate successful login
       setTimeout(() => {
-        setSuccessMessage('');
+        setSuccessMessage("");
         // Navigate to home or dashboard
-        navigate('/');
+        navigate("/");
       }, 2000);
     } else {
       setErrors(formErrors);
@@ -66,12 +66,12 @@ const SignIn = () => {
   };
 
   const handleSignUp = () => {
-    navigate('/signup');
+    navigate("/signup");
   };
 
   const handleForgotPassword = () => {
     // Navigate to forgot password page or show modal
-    console.log('Forgot password clicked');
+    console.log("Forgot password clicked");
   };
 
   return (
@@ -82,7 +82,7 @@ const SignIn = () => {
           {successMessage}
         </div>
       )}
-      
+
       <form className={styles.form} onSubmit={handleSubmit}>
         <h1 className={styles.headingWord}>
           Welcome <span className={styles.highlight}>Back</span>
@@ -102,9 +102,11 @@ const SignIn = () => {
             placeholder="Enter Your Email"
             value={values.email}
             onChange={handleChanges}
-            className={errors.email ? styles.inputError : ''}
+            className={errors.email ? styles.inputError : ""}
           />
-          {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+          {errors.email && (
+            <span className={styles.errorText}>{errors.email}</span>
+          )}
         </div>
 
         {/* Password */}
@@ -120,9 +122,11 @@ const SignIn = () => {
             placeholder="Enter Your Password"
             value={values.password}
             onChange={handleChanges}
-            className={errors.password ? styles.inputError : ''}
+            className={errors.password ? styles.inputError : ""}
           />
-          {errors.password && <span className={styles.errorText}>{errors.password}</span>}
+          {errors.password && (
+            <span className={styles.errorText}>{errors.password}</span>
+          )}
         </div>
 
         {/* Remember Me & Forgot Password */}
@@ -151,7 +155,11 @@ const SignIn = () => {
         </button>
 
         {/* Sign Up Link */}
-        <button type="button" className={styles.cancelButton} onClick={handleSignUp}>
+        <button
+          type="button"
+          className={styles.cancelButton}
+          onClick={handleSignUp}
+        >
           Don't have an account? Sign Up
         </button>
       </form>

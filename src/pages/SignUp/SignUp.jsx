@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import styles from './SignUp.module.css';
-import { IoIosContact } from 'react-icons/io';
-import { MdOutlineMail, MdLock } from 'react-icons/md';
-import { BsTelephone } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import styles from "./SignUp.module.css";
+import { IoIosContact } from "react-icons/io";
+import { MdOutlineMail, MdLock } from "react-icons/md";
+import { BsTelephone } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChanges = (e) => {
     const { name, value } = e.target;
@@ -28,7 +28,7 @@ const SignUp = () => {
     if (errors[name]) {
       setErrors({
         ...errors,
-        [name]: '',
+        [name]: "",
       });
     }
   };
@@ -37,31 +37,31 @@ const SignUp = () => {
     const newErrors = {};
 
     if (!values.name.trim()) {
-      newErrors.name = 'Full name is required';
+      newErrors.name = "Full name is required";
     }
 
     if (!values.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
 
     if (!values.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\d{10,15}$/.test(values.phone.replace(/[\s-]/g, ''))) {
-      newErrors.phone = 'Phone number is invalid';
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\d{10,15}$/.test(values.phone.replace(/[\s-]/g, ""))) {
+      newErrors.phone = "Phone number is invalid";
     }
 
     if (!values.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     } else if (values.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Password must be at least 6 characters";
     }
 
     if (!values.confirmPassword) {
-      newErrors.confirmPassword = 'Please confirm your password';
+      newErrors.confirmPassword = "Please confirm your password";
     } else if (values.password !== values.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
+      newErrors.confirmPassword = "Passwords do not match";
     }
 
     return newErrors;
@@ -73,19 +73,19 @@ const SignUp = () => {
 
     if (Object.keys(formErrors).length === 0) {
       // Form is valid, proceed with submission
-      console.log('Form submitted:', values);
-      setSuccessMessage('Sent successfully! Please check your email.');
-      
+      console.log("Form submitted:", values);
+      setSuccessMessage("Sent successfully! Please check your email.");
+
       // Clear form after successful submission
       setTimeout(() => {
         setValues({
-          name: '',
-          email: '',
-          phone: '',
-          password: '',
-          confirmPassword: '',
+          name: "",
+          email: "",
+          phone: "",
+          password: "",
+          confirmPassword: "",
         });
-        setSuccessMessage('');
+        setSuccessMessage("");
       }, 3000);
     } else {
       setErrors(formErrors);
@@ -93,7 +93,7 @@ const SignUp = () => {
   };
 
   const handleCancel = () => {
-    navigate('/signin');
+    navigate("/signin");
   };
 
   return (
@@ -104,7 +104,7 @@ const SignUp = () => {
           {successMessage}
         </div>
       )}
-      
+
       <form className={styles.form} onSubmit={handleSubmit}>
         <h1 className={styles.headingWord}>
           Create Your <span className={styles.highlight}>Account</span>
@@ -123,9 +123,11 @@ const SignUp = () => {
             placeholder="Enter Your Name"
             value={values.name}
             onChange={handleChanges}
-            className={errors.name ? styles.inputError : ''}
+            className={errors.name ? styles.inputError : ""}
           />
-          {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+          {errors.name && (
+            <span className={styles.errorText}>{errors.name}</span>
+          )}
         </div>
 
         {/* Email */}
@@ -141,9 +143,11 @@ const SignUp = () => {
             placeholder="Enter Your Email"
             value={values.email}
             onChange={handleChanges}
-            className={errors.email ? styles.inputError : ''}
+            className={errors.email ? styles.inputError : ""}
           />
-          {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+          {errors.email && (
+            <span className={styles.errorText}>{errors.email}</span>
+          )}
         </div>
 
         {/* Phone */}
@@ -159,9 +163,11 @@ const SignUp = () => {
             placeholder="Enter Your Phone Number"
             value={values.phone}
             onChange={handleChanges}
-            className={errors.phone ? styles.inputError : ''}
+            className={errors.phone ? styles.inputError : ""}
           />
-          {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
+          {errors.phone && (
+            <span className={styles.errorText}>{errors.phone}</span>
+          )}
         </div>
 
         {/* Password */}
@@ -177,9 +183,11 @@ const SignUp = () => {
             placeholder="Enter Your Password"
             value={values.password}
             onChange={handleChanges}
-            className={errors.password ? styles.inputError : ''}
+            className={errors.password ? styles.inputError : ""}
           />
-          {errors.password && <span className={styles.errorText}>{errors.password}</span>}
+          {errors.password && (
+            <span className={styles.errorText}>{errors.password}</span>
+          )}
         </div>
 
         {/* Confirm Password */}
@@ -195,9 +203,11 @@ const SignUp = () => {
             placeholder="Confirm Your Password"
             value={values.confirmPassword}
             onChange={handleChanges}
-            className={errors.confirmPassword ? styles.inputError : ''}
+            className={errors.confirmPassword ? styles.inputError : ""}
           />
-          {errors.confirmPassword && <span className={styles.errorText}>{errors.confirmPassword}</span>}
+          {errors.confirmPassword && (
+            <span className={styles.errorText}>{errors.confirmPassword}</span>
+          )}
         </div>
 
         {/* Submit Button */}
@@ -206,7 +216,11 @@ const SignUp = () => {
         </button>
 
         {/* Sign In Link */}
-        <button type="button" className={styles.cancelButton} onClick={handleCancel}>
+        <button
+          type="button"
+          className={styles.cancelButton}
+          onClick={handleCancel}
+        >
           Already have an account? Sign In
         </button>
       </form>

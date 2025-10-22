@@ -1,9 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import JobOffers from './pages/JobOffers/JobOffers';
-import Forms from './pages/Forms';
-import SignUp from './pages/SignUp';
-import SignIn from './pages/SignIn';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import JobOffers from "./pages/JobOffers/JobOffers";
+import Forms from "./pages/Forms";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 
 function App() {
   return (
@@ -19,4 +19,3 @@ function App() {
 }
 
 export default App;
-
